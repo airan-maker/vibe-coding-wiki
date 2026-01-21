@@ -164,7 +164,7 @@ export const glossaryTerms: GlossaryTerm[] = [
 
 실수로 숫자 대신 문자를 넣는 등의 오류를 미리 잡아줍니다.`,
     analogy: `맞춤법 검사기가 있는 문서 편집기와 비슷해요. 글(JavaScript)을 쓸 때 틀린 부분을 빨간 줄로 알려주는 것처럼, 코드의 실수를 미리 알려줍니다.`,
-    example: `Claude가 만드는 코드는 대부분 TypeScript입니다.
+    example: `AI가 만드는 코드는 대부분 TypeScript입니다.
 .ts 또는 .tsx 파일이 TypeScript 파일이에요.`,
     related: ["JavaScript", "React", "Next.js"],
     category: "프론트엔드",
@@ -178,7 +178,7 @@ export const glossaryTerms: GlossaryTerm[] = [
 페이스북에서 만들었고, 컴포넌트라는 재사용 가능한 조각으로 화면을 구성합니다.`,
     analogy: `레고 블록과 비슷해요. 버튼, 카드, 헤더 같은 블록(컴포넌트)을 만들어두고, 이걸 조합해서 페이지를 만들어요. 같은 블록을 여러 곳에 재사용할 수 있죠.`,
     example: `"React 컴포넌트 만들어줘" → 재사용 가능한 UI 조각 생성
-Claude가 만드는 웹앱은 대부분 React 기반입니다.`,
+AI가 만드는 웹앱은 대부분 React 기반입니다.`,
     related: ["Next.js", "컴포넌트", "JavaScript"],
     category: "프론트엔드",
   },
@@ -190,7 +190,7 @@ Claude가 만드는 웹앱은 대부분 React 기반입니다.`,
 
 페이지 라우팅, 서버 기능, 최적화 등을 자동으로 처리해줘서 웹사이트를 더 쉽게 만들 수 있어요.`,
     analogy: `React가 레고 블록이라면, Next.js는 레고 블록 + 설명서 + 완성 키트예요. 블록만 있으면 뭘 만들지 고민해야 하지만, 키트가 있으면 바로 멋진 걸 만들 수 있죠.`,
-    example: `Claude가 "프로젝트 만들어줘"라고 하면 보통 Next.js를 사용합니다.
+    example: `AI에게 "프로젝트 만들어줘"라고 하면 보통 Next.js를 사용합니다.
 Vercel과 궁합이 좋아서 배포도 쉬워요.`,
     related: ["React", "Vercel", "TypeScript"],
     category: "프론트엔드",
@@ -296,7 +296,7 @@ SUPABASE_URL=https://xxx.supabase.co
 GitHub에 코드를 올리면 자동으로 배포해주고, URL도 제공해줍니다. Next.js를 만든 회사예요.`,
     analogy: `원클릭 출판 서비스와 비슷해요. 원고(코드)만 올리면 알아서 책(웹사이트)을 만들어서 서점(인터넷)에 올려줍니다.`,
     example: `"Vercel에 배포해줘" → 인터넷에 웹사이트 공개
-Claude가 만든 프로젝트는 보통 Vercel로 배포합니다.`,
+AI가 만든 프로젝트는 보통 Vercel로 배포합니다.`,
     related: ["배포", "GitHub", "Next.js"],
     category: "배포",
   },
@@ -349,7 +349,7 @@ Claude가 만든 프로젝트는 보통 Vercel로 배포합니다.`,
 마우스 클릭 대신 글자를 입력해서 파일을 만들고, 프로그램을 실행하고, 서버를 관리합니다.`,
     analogy: `마법 주문과 비슷해요. "npm run dev"라고 주문(명령)을 외치면 개발 서버가 실행되는 것처럼, 정해진 명령어로 원하는 동작을 실행할 수 있어요.`,
     example: `"터미널에서 실행해줘" → 명령어를 실행
-Claude가 알려주는 명령어를 복사해서 붙여넣기하면 됩니다.`,
+AI가 알려주는 명령어를 복사해서 붙여넣기하면 됩니다.`,
     related: ["npm", "Git", "CLI"],
     category: "도구",
   },
