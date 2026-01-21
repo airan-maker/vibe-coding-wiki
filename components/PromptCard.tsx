@@ -20,7 +20,20 @@ export default function PromptCard({
       <article className="max-w-4xl">
         {/* Header */}
         <div className="mb-6 sm:mb-8">
-          <h1 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">{prompt.title}</h1>
+          <div className="flex items-center gap-3 mb-3 sm:mb-4">
+            <h1 className="text-2xl sm:text-3xl font-bold text-white">{prompt.title}</h1>
+            {prompt.level && (
+              <span
+                className={`px-2 py-1 text-xs font-medium rounded-full ${
+                  prompt.level === "beginner"
+                    ? "bg-green-900/50 text-green-300 border border-green-700/50"
+                    : "bg-orange-900/50 text-orange-300 border border-orange-700/50"
+                }`}
+              >
+                {prompt.level === "beginner" ? "Beginner" : "Advanced"}
+              </span>
+            )}
+          </div>
           <div className="flex flex-wrap gap-2">
             {prompt.tags.map((tag) => (
               <span
@@ -132,9 +145,26 @@ export default function PromptCard({
   return (
     <Link
       href={`/wiki/${categoryId}/${prompt.id}`}
-      className="block bg-gray-800/50 rounded-xl p-4 sm:p-5 border border-gray-700 hover:border-purple-500/50 transition-all hover:bg-gray-800 active:scale-[0.98]"
+      className={`block rounded-xl p-4 sm:p-5 border transition-all hover:bg-gray-800 active:scale-[0.98] ${
+        prompt.level === "beginner"
+          ? "bg-green-900/10 border-green-800/30 hover:border-green-500/50"
+          : "bg-gray-800/50 border-gray-700 hover:border-purple-500/50"
+      }`}
     >
-      <h3 className="text-base sm:text-lg font-semibold text-white mb-2">{prompt.title}</h3>
+      <div className="flex items-start justify-between gap-2 mb-2">
+        <h3 className="text-base sm:text-lg font-semibold text-white">{prompt.title}</h3>
+        {prompt.level && (
+          <span
+            className={`px-2 py-0.5 text-xs font-medium rounded-full shrink-0 ${
+              prompt.level === "beginner"
+                ? "bg-green-900/50 text-green-300"
+                : "bg-orange-900/50 text-orange-300"
+            }`}
+          >
+            {prompt.level === "beginner" ? "Beginner" : "Advanced"}
+          </span>
+        )}
+      </div>
       <p className="text-gray-400 text-xs sm:text-sm line-clamp-2 mb-3 font-mono">
         {prompt.prompt.slice(0, 100)}...
       </p>

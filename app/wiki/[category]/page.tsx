@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCategoryById, getAllCategories } from "@/lib/wiki-data";
-import PromptCard from "@/components/PromptCard";
+import LevelFilter from "@/components/LevelFilter";
 
 interface PageProps {
   params: Promise<{ category: string }>;
@@ -42,16 +42,8 @@ export default async function CategoryPage({ params }: PageProps) {
         <p className="text-gray-400 text-sm sm:text-base">{category.description}</p>
       </header>
 
-      {/* Prompt List */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
-        {category.prompts.map((prompt) => (
-          <PromptCard
-            key={prompt.id}
-            prompt={prompt}
-            categoryId={category.id}
-          />
-        ))}
-      </div>
+      {/* Prompt List with Level Filter */}
+      <LevelFilter prompts={category.prompts} categoryId={category.id} />
     </div>
   );
 }

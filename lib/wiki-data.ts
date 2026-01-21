@@ -9,6 +9,7 @@ export interface PromptTemplate {
     reason: string;
   };
   tags: string[];
+  level?: "beginner" | "advanced"; // beginner: 초보자용, advanced: 고급 (기본값)
 }
 
 export interface WikiCategory {
@@ -924,9 +925,34 @@ Vercel Analytics는 성능 중심, GA는 마케팅/전환 분석에 강함.`,
 ];
 
 import { newCategories } from "./new-categories";
+import { setupGuideCategory, beginnerPrompts } from "./beginner-prompts";
+
+// 기존 카테고리에 beginner 프롬프트 병합
+function mergeBeginnerPrompts(categories: WikiCategory[]): WikiCategory[] {
+  return categories.map((category) => {
+    const beginnerForCategory = beginnerPrompts[category.id];
+    if (beginnerForCategory) {
+      return {
+        ...category,
+        prompts: [
+          ...beginnerForCategory, // beginner 먼저
+          ...category.prompts.map((p) => ({ ...p, level: "advanced" as const })), // 기존은 advanced
+        ],
+      };
+    }
+    // beginner 프롬프트가 없으면 기존 프롬프트를 advanced로
+    return {
+      ...category,
+      prompts: category.prompts.map((p) => ({ ...p, level: "advanced" as const })),
+    };
+  });
+}
 
 export function getAllCategories(): WikiCategory[] {
-  return [...wikiData, ...newCategories];
+  const baseCategories = [...wikiData, ...newCategories];
+  const withBeginnerPrompts = mergeBeginnerPrompts(baseCategories);
+  // 시작하기 카테고리를 맨 앞에 추가
+  return [setupGuideCategory, ...withBeginnerPrompts];
 }
 
 export function getCategoryById(id: string): WikiCategory | undefined {
