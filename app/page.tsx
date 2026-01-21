@@ -84,14 +84,14 @@ export default function Home() {
                   <div>
                     <span
                       className={`inline-block px-2 py-0.5 text-xs font-medium rounded-full mb-1 ${
-                        tutorial.difficulty === "초급"
+                        tutorial.difficulty === "beginner"
                           ? "bg-green-900/50 text-green-300"
-                          : tutorial.difficulty === "중급"
+                          : tutorial.difficulty === "intermediate"
                           ? "bg-yellow-900/50 text-yellow-300"
                           : "bg-red-900/50 text-red-300"
                       }`}
                     >
-                      {tutorial.difficulty}
+                      {tutorial.difficulty === "beginner" ? "Beginner" : tutorial.difficulty === "intermediate" ? "Intermediate" : "Advanced"}
                     </span>
                     <p className="text-gray-500 text-xs">{tutorial.subtitle}</p>
                   </div>

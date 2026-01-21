@@ -48,14 +48,14 @@ export default async function TutorialPage({ params }: PageProps) {
               <div className="flex flex-wrap items-center gap-2 mb-2">
                 <span
                   className={`px-2 py-0.5 text-xs font-medium rounded-full ${
-                    tutorial.difficulty === "초급"
+                    tutorial.difficulty === "beginner"
                       ? "bg-green-900/50 text-green-300"
-                      : tutorial.difficulty === "중급"
+                      : tutorial.difficulty === "intermediate"
                       ? "bg-yellow-900/50 text-yellow-300"
                       : "bg-red-900/50 text-red-300"
                   }`}
                 >
-                  {tutorial.difficulty}
+                  {tutorial.difficulty === "beginner" ? "Beginner" : tutorial.difficulty === "intermediate" ? "Intermediate" : "Advanced"}
                 </span>
                 <span className="text-gray-500 text-xs">
                   {tutorial.steps.length}단계 · 약 {tutorial.estimatedPrompts}개 프롬프트
