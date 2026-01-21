@@ -23,9 +23,9 @@ export default async function CategoryPage({ params }: PageProps) {
   }
 
   return (
-    <div className="p-8">
+    <div className="p-4 pt-16 sm:p-6 sm:pt-16 lg:p-8 lg:pt-8">
       {/* Breadcrumb */}
-      <nav className="mb-6 text-sm">
+      <nav className="mb-4 sm:mb-6 text-xs sm:text-sm">
         <Link href="/" className="text-gray-500 hover:text-gray-300">
           홈
         </Link>
@@ -34,16 +34,16 @@ export default async function CategoryPage({ params }: PageProps) {
       </nav>
 
       {/* Header */}
-      <header className="mb-8">
-        <div className="flex items-center gap-4 mb-3">
-          <span className="text-4xl">{category.icon}</span>
-          <h1 className="text-3xl font-bold text-white">{category.title}</h1>
+      <header className="mb-6 sm:mb-8">
+        <div className="flex items-center gap-3 sm:gap-4 mb-2 sm:mb-3">
+          <span className="text-3xl sm:text-4xl">{category.icon}</span>
+          <h1 className="text-2xl sm:text-3xl font-bold text-white">{category.title}</h1>
         </div>
-        <p className="text-gray-400">{category.description}</p>
+        <p className="text-gray-400 text-sm sm:text-base">{category.description}</p>
       </header>
 
       {/* Prompt List */}
-      <div className="grid md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
         {category.prompts.map((prompt) => (
           <PromptCard
             key={prompt.id}

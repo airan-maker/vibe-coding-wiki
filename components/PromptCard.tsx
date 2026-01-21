@@ -19,8 +19,8 @@ export default function PromptCard({
     return (
       <article className="max-w-4xl">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-white mb-4">{prompt.title}</h1>
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">{prompt.title}</h1>
           <div className="flex flex-wrap gap-2">
             {prompt.tags.map((tag) => (
               <span
@@ -34,33 +34,33 @@ export default function PromptCard({
         </div>
 
         {/* Prompt */}
-        <section className="mb-8">
+        <section className="mb-6 sm:mb-8">
           <div className="flex items-center justify-between mb-3">
-            <h2 className="text-lg font-semibold text-white flex items-center gap-2">
+            <h2 className="text-base sm:text-lg font-semibold text-white flex items-center gap-2">
               <span className="text-purple-400">▸</span>
               프롬프트
             </h2>
             <CopyButton text={prompt.prompt} />
           </div>
-          <div className="bg-gray-800 rounded-xl p-5 border border-gray-700">
-            <pre className="text-gray-100 text-sm whitespace-pre-wrap font-mono leading-relaxed">
+          <div className="bg-gray-800 rounded-lg sm:rounded-xl p-3 sm:p-5 border border-gray-700 overflow-x-auto">
+            <pre className="text-gray-100 text-xs sm:text-sm whitespace-pre-wrap font-mono leading-relaxed">
               {prompt.prompt}
             </pre>
           </div>
         </section>
 
         {/* Explanation */}
-        <section className="mb-8">
-          <h2 className="text-lg font-semibold text-white flex items-center gap-2 mb-3">
+        <section className="mb-6 sm:mb-8">
+          <h2 className="text-base sm:text-lg font-semibold text-white flex items-center gap-2 mb-3">
             <span className="text-green-400">▸</span>
             왜 이렇게 쓰면 좋은가?
           </h2>
-          <div className="bg-gray-800/50 rounded-xl p-5 border border-gray-700">
+          <div className="bg-gray-800/50 rounded-lg sm:rounded-xl p-3 sm:p-5 border border-gray-700">
             <div className="prose prose-invert prose-sm max-w-none">
               {prompt.explanation.split("\n\n").map((paragraph, idx) => {
                 if (paragraph.startsWith("**") && paragraph.endsWith("**")) {
                   return (
-                    <h3 key={idx} className="text-white font-semibold mt-4 mb-2">
+                    <h3 key={idx} className="text-white font-semibold mt-4 mb-2 text-sm sm:text-base">
                       {paragraph.replace(/\*\*/g, "")}
                     </h3>
                   );
@@ -68,7 +68,7 @@ export default function PromptCard({
                 if (paragraph.startsWith("- ")) {
                   const items = paragraph.split("\n");
                   return (
-                    <ul key={idx} className="list-disc list-inside space-y-1 text-gray-300">
+                    <ul key={idx} className="list-disc list-inside space-y-1 text-gray-300 text-xs sm:text-sm">
                       {items.map((item, i) => (
                         <li key={i}>{formatText(item.replace("- ", ""))}</li>
                       ))}
@@ -76,7 +76,7 @@ export default function PromptCard({
                   );
                 }
                 return (
-                  <p key={idx} className="text-gray-300 leading-relaxed">
+                  <p key={idx} className="text-gray-300 leading-relaxed text-xs sm:text-sm">
                     {formatText(paragraph)}
                   </p>
                 );
@@ -86,16 +86,16 @@ export default function PromptCard({
         </section>
 
         {/* Tips */}
-        <section className="mb-8">
-          <h2 className="text-lg font-semibold text-white flex items-center gap-2 mb-3">
+        <section className="mb-6 sm:mb-8">
+          <h2 className="text-base sm:text-lg font-semibold text-white flex items-center gap-2 mb-3">
             <span className="text-yellow-400">▸</span>
             추가 팁
           </h2>
-          <div className="bg-yellow-900/20 rounded-xl p-5 border border-yellow-800/30">
+          <div className="bg-yellow-900/20 rounded-lg sm:rounded-xl p-3 sm:p-5 border border-yellow-800/30">
             <ul className="space-y-2">
               {prompt.tips.map((tip, idx) => (
-                <li key={idx} className="flex items-start gap-2 text-gray-300">
-                  <span className="text-yellow-500 mt-0.5">💡</span>
+                <li key={idx} className="flex items-start gap-2 text-gray-300 text-xs sm:text-sm">
+                  <span className="text-yellow-500 mt-0.5 shrink-0">💡</span>
                   <span>{tip}</span>
                 </li>
               ))}
@@ -105,21 +105,21 @@ export default function PromptCard({
 
         {/* Bad Example */}
         {prompt.badExample && (
-          <section className="mb-8">
-            <h2 className="text-lg font-semibold text-white flex items-center gap-2 mb-3">
+          <section className="mb-6 sm:mb-8">
+            <h2 className="text-base sm:text-lg font-semibold text-white flex items-center gap-2 mb-3">
               <span className="text-red-400">▸</span>
               이렇게 쓰면 안 좋아요
             </h2>
-            <div className="bg-red-900/20 rounded-xl p-5 border border-red-800/30">
+            <div className="bg-red-900/20 rounded-lg sm:rounded-xl p-3 sm:p-5 border border-red-800/30">
               <div className="mb-3">
-                <span className="text-red-400 text-sm font-medium">❌ 나쁜 예시:</span>
-                <pre className="mt-2 text-gray-400 text-sm bg-gray-800/50 p-3 rounded-lg font-mono">
+                <span className="text-red-400 text-xs sm:text-sm font-medium">❌ 나쁜 예시:</span>
+                <pre className="mt-2 text-gray-400 text-xs sm:text-sm bg-gray-800/50 p-2 sm:p-3 rounded-lg font-mono overflow-x-auto">
                   {prompt.badExample.prompt}
                 </pre>
               </div>
               <div className="flex items-start gap-2">
-                <span className="text-red-400">→</span>
-                <span className="text-gray-300">{prompt.badExample.reason}</span>
+                <span className="text-red-400 shrink-0">→</span>
+                <span className="text-gray-300 text-xs sm:text-sm">{prompt.badExample.reason}</span>
               </div>
             </div>
           </section>
@@ -132,10 +132,10 @@ export default function PromptCard({
   return (
     <Link
       href={`/wiki/${categoryId}/${prompt.id}`}
-      className="block bg-gray-800/50 rounded-xl p-5 border border-gray-700 hover:border-purple-500/50 transition-all hover:bg-gray-800"
+      className="block bg-gray-800/50 rounded-xl p-4 sm:p-5 border border-gray-700 hover:border-purple-500/50 transition-all hover:bg-gray-800 active:scale-[0.98]"
     >
-      <h3 className="text-lg font-semibold text-white mb-2">{prompt.title}</h3>
-      <p className="text-gray-400 text-sm line-clamp-2 mb-3 font-mono">
+      <h3 className="text-base sm:text-lg font-semibold text-white mb-2">{prompt.title}</h3>
+      <p className="text-gray-400 text-xs sm:text-sm line-clamp-2 mb-3 font-mono">
         {prompt.prompt.slice(0, 100)}...
       </p>
       <div className="flex flex-wrap gap-1">
@@ -158,7 +158,7 @@ function formatText(text: string): React.ReactNode {
   return parts.map((part, i) => {
     if (part.startsWith("`") && part.endsWith("`")) {
       return (
-        <code key={i} className="px-1.5 py-0.5 bg-gray-700 text-purple-300 rounded text-xs font-mono">
+        <code key={i} className="px-1 sm:px-1.5 py-0.5 bg-gray-700 text-purple-300 rounded text-xs font-mono break-all">
           {part.slice(1, -1)}
         </code>
       );
