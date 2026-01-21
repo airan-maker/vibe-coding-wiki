@@ -16,7 +16,7 @@ export default function Home() {
           <span className="text-purple-400"> Wiki</span>
         </h1>
         <p className="text-gray-400 text-base sm:text-lg mb-4 sm:mb-6">
-          AI(Claude Code)와 함께 효율적으로 개발하기 위한 프롬프트 템플릿 모음
+          AI와 함께 효율적으로 개발하기 위한 프롬프트 템플릿 모음
         </p>
         <SearchBar />
       </header>
@@ -83,13 +83,12 @@ export default function Home() {
                   <span className="text-3xl">{tutorial.icon}</span>
                   <div>
                     <span
-                      className={`inline-block px-2 py-0.5 text-xs font-medium rounded-full mb-1 ${
-                        tutorial.difficulty === "beginner"
+                      className={`inline-block px-2 py-0.5 text-xs font-medium rounded-full mb-1 ${tutorial.difficulty === "beginner"
                           ? "bg-green-900/50 text-green-300"
                           : tutorial.difficulty === "intermediate"
-                          ? "bg-yellow-900/50 text-yellow-300"
-                          : "bg-red-900/50 text-red-300"
-                      }`}
+                            ? "bg-yellow-900/50 text-yellow-300"
+                            : "bg-red-900/50 text-red-300"
+                        }`}
                     >
                       {tutorial.difficulty === "beginner" ? "Beginner" : tutorial.difficulty === "intermediate" ? "Intermediate" : "Advanced"}
                     </span>
