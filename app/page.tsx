@@ -1,9 +1,11 @@
 import Link from "next/link";
 import SearchBar from "@/components/SearchBar";
 import { getAllCategories } from "@/lib/wiki-data";
+import { getAllTutorials } from "@/lib/tutorials-data";
 
 export default function Home() {
   const categories = getAllCategories();
+  const tutorials = getAllTutorials();
 
   return (
     <div className="p-4 pt-16 sm:p-6 sm:pt-16 lg:p-8 lg:pt-8">
@@ -49,9 +51,74 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Real Project Tutorials - NEW */}
+      <section className="mb-8 lg:mb-12">
+        <div className="flex items-center justify-between mb-4 sm:mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-white">
+            🚀 실전 프로젝트 Step-by-Step
+          </h2>
+          <Link
+            href="/tutorials"
+            className="text-purple-400 hover:text-purple-300 text-sm"
+          >
+            전체 보기 →
+          </Link>
+        </div>
+        <p className="text-gray-400 text-sm mb-6">
+          아이디어부터 배포까지, 실제 서비스를 만드는 전체 과정을 따라해보세요
+        </p>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          {tutorials.map((tutorial) => (
+            <Link
+              key={tutorial.id}
+              href={`/tutorials/${tutorial.id}`}
+              className="group relative overflow-hidden rounded-xl"
+            >
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${tutorial.color} opacity-20 group-hover:opacity-30 transition-opacity`}
+              />
+              <div className="relative bg-gray-800/80 backdrop-blur rounded-xl p-5 border border-gray-700 group-hover:border-purple-500/50 transition-all h-full">
+                <div className="flex items-start gap-3 mb-3">
+                  <span className="text-3xl">{tutorial.icon}</span>
+                  <div>
+                    <span
+                      className={`inline-block px-2 py-0.5 text-xs font-medium rounded-full mb-1 ${
+                        tutorial.difficulty === "초급"
+                          ? "bg-green-900/50 text-green-300"
+                          : tutorial.difficulty === "중급"
+                          ? "bg-yellow-900/50 text-yellow-300"
+                          : "bg-red-900/50 text-red-300"
+                      }`}
+                    >
+                      {tutorial.difficulty}
+                    </span>
+                    <p className="text-gray-500 text-xs">{tutorial.subtitle}</p>
+                  </div>
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-purple-300 transition-colors">
+                  {tutorial.title}
+                </h3>
+                <p className="text-gray-400 text-xs sm:text-sm line-clamp-2 mb-3">
+                  {tutorial.description}
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-gray-500">
+                    {tutorial.steps.length}단계 · {tutorial.estimatedPrompts}개 프롬프트
+                  </span>
+                  <span className="text-purple-400 text-sm group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       {/* Category Grid */}
       <section>
-        <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">카테고리</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">📚 프롬프트 카테고리</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {categories.map((category) => (
             <Link
@@ -152,7 +219,7 @@ export default function Home() {
       <footer className="mt-12 lg:mt-16 pt-6 lg:pt-8 border-t border-gray-800 text-center text-gray-500 text-xs sm:text-sm">
         <p>
           Built with Antigravity + Claude Code |
-          <a href="https://github.com" className="text-purple-400 hover:text-purple-300 ml-1">
+          <a href="https://github.com/airan-maker/vibe-coding-wiki" className="text-purple-400 hover:text-purple-300 ml-1">
             GitHub
           </a>
         </p>

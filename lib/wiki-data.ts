@@ -923,12 +923,15 @@ Vercel Analytics는 성능 중심, GA는 마케팅/전환 분석에 강함.`,
   },
 ];
 
+import { newCategories } from "./new-categories";
+
 export function getAllCategories(): WikiCategory[] {
-  return wikiData;
+  return [...wikiData, ...newCategories];
 }
 
 export function getCategoryById(id: string): WikiCategory | undefined {
-  return wikiData.find((cat) => cat.id === id);
+  const allCategories = getAllCategories();
+  return allCategories.find((cat) => cat.id === id);
 }
 
 export function getPromptById(

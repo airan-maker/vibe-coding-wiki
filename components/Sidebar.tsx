@@ -4,11 +4,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { getAllCategories } from "@/lib/wiki-data";
+import { getAllTutorials } from "@/lib/tutorials-data";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const categories = getAllCategories();
+  const tutorials = getAllTutorials();
 
   // 페이지 이동시 모바일 메뉴 닫기
   useEffect(() => {
@@ -23,6 +25,8 @@ export default function Sidebar() {
     document.addEventListener("keydown", handleEsc);
     return () => document.removeEventListener("keydown", handleEsc);
   }, []);
+
+  const isTutorialsActive = pathname?.startsWith("/tutorials");
 
   return (
     <>
@@ -73,6 +77,49 @@ export default function Sidebar() {
         </div>
 
         <nav className="px-4 pb-6">
+          {/* 실전 프로젝트 섹션 */}
+          <div className="mb-4">
+            <Link
+              href="/tutorials"
+              className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${
+                isTutorialsActive && pathname === "/tutorials"
+                  ? "bg-gradient-to-r from-green-600 to-emerald-600 text-white"
+                  : "text-gray-400 hover:bg-gray-800 hover:text-white"
+              }`}
+            >
+              <span className="text-lg">🚀</span>
+              <span className="text-sm font-medium">실전 프로젝트</span>
+              <span className="ml-auto text-xs bg-green-500/20 text-green-400 px-1.5 py-0.5 rounded">NEW</span>
+            </Link>
+
+            {isTutorialsActive && (
+              <div className="ml-9 mt-1 space-y-1">
+                {tutorials.map((tutorial) => {
+                  const isActive = pathname === `/tutorials/${tutorial.id}`;
+                  return (
+                    <Link
+                      key={tutorial.id}
+                      href={`/tutorials/${tutorial.id}`}
+                      className={`block px-3 py-1.5 text-xs rounded transition-colors ${
+                        isActive
+                          ? "text-green-300 bg-gray-800"
+                          : "text-gray-500 hover:text-gray-300"
+                      }`}
+                    >
+                      {tutorial.icon} {tutorial.title}
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          <div className="border-t border-gray-800 my-4" />
+
+          {/* 프롬프트 카테고리 */}
+          <p className="text-xs text-gray-600 uppercase tracking-wider mb-2 px-3">
+            프롬프트 템플릿
+          </p>
           {categories.map((category) => {
             const isActive = pathname?.includes(`/wiki/${category.id}`);
             return (
