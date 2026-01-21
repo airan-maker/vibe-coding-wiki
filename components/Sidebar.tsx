@@ -27,6 +27,7 @@ export default function Sidebar() {
   }, []);
 
   const isTutorialsActive = pathname?.startsWith("/tutorials");
+  const isGlossaryActive = pathname?.startsWith("/glossary");
 
   return (
     <>
@@ -112,6 +113,21 @@ export default function Sidebar() {
                 })}
               </div>
             )}
+          </div>
+
+          {/* 개발 용어 사전 */}
+          <div className="mb-4">
+            <Link
+              href="/glossary"
+              className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${
+                isGlossaryActive
+                  ? "bg-gradient-to-r from-blue-600 to-cyan-600 text-white"
+                  : "text-gray-400 hover:bg-gray-800 hover:text-white"
+              }`}
+            >
+              <span className="text-lg">📖</span>
+              <span className="text-sm font-medium">용어 사전</span>
+            </Link>
           </div>
 
           <div className="border-t border-gray-800 my-4" />
