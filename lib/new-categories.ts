@@ -3,8 +3,8 @@ import type { WikiCategory } from "./wiki-data";
 export const newCategories: WikiCategory[] = [
   {
     id: "design-trends",
-    title: "디자인 트렌드 2025",
-    description: "최신 UI/UX 디자인 트렌드 적용 프롬프트",
+    title: "디자인 요소",
+    description: "트렌디한 UI/UX 디자인 요소 적용 프롬프트",
     icon: "✨",
     prompts: [
       {
