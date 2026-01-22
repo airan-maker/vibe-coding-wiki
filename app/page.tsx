@@ -44,11 +44,36 @@ export default function Home() {
           <div className="flex gap-3">
             <span className="text-xl sm:text-2xl">3️⃣</span>
             <div>
-              <h3 className="font-medium text-white text-sm sm:text-base">Claude에게 전달</h3>
+              <h3 className="font-medium text-white text-sm sm:text-base">AI에게 전달</h3>
               <p className="text-xs sm:text-sm">필요에 맞게 수정 후 사용하세요</p>
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Antigravity Guide Banner */}
+      <section className="mb-8 lg:mb-12">
+        <Link
+          href="/antigravity"
+          className="group block bg-gradient-to-r from-blue-900/40 to-purple-900/40 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-blue-700/30 hover:border-purple-500/50 transition-all"
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <span className="text-3xl sm:text-4xl">🚀</span>
+              <div>
+                <h2 className="text-lg sm:text-xl font-semibold text-white group-hover:text-purple-300 transition-colors">
+                  Google Antigravity 가이드
+                </h2>
+                <p className="text-gray-400 text-sm">
+                  AI 에이전트 기반 개발 플랫폼 사용법 완벽 정리
+                </p>
+              </div>
+            </div>
+            <span className="text-purple-400 text-xl group-hover:translate-x-1 transition-transform hidden sm:block">
+              →
+            </span>
+          </div>
+        </Link>
       </section>
 
       {/* Real Project Tutorials - NEW */}
